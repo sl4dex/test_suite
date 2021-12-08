@@ -1,61 +1,77 @@
 #!/bin/bash
-echo -e "\033[0;31m########TEST ls#######\033[0;37m"
-echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
+echo -e "\n---------------\n"
+echo -e "\033[0;31m### TEST 0: ls ###\033[0;37m"
+echo -e "\033[0;34m>>>>> EXPECTED <<<<<\033[0;32m"
 ls
-echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
+echo -e "\033[0;34m>>>>> GOT <<<<<\033[0;37m"
 echo ls | ./hsh
+echo -e "\n---------------\n"
 
-echo -e "\033[0;31m########TEST ls WITH PATH########\033[0;37m"
-echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
+echo -e "\033[0;31m### TEST 1: /bin/ls ###\033[0;37m"
+echo -e "\033[0;34m>>>>> EXPECTED <<<<<\033[0;32m"
 /bin/ls
-echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
+echo -e "\033[0;34m>>>>> GOT <<<<<\033[0;37m"
 echo "/bin/ls" | ./hsh
-echo -e "\033[0;31m########TEST ls WITH SPACES########\033[0;37m"
-echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
-    ls
-echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
-echo "   ls" | ./hsh
+echo -e "\n---------------\n"
 
-echo -e "\033[0;31m#########TEST ls -la /tmp##########\033[0;37m"
+echo -e "\033[0;31m### TEST 2: ls -la ###\033[0;37m"
+echo -e "\033[0;34m>>>>> EXPECTED <<<<<\033[0;32m"
+ls -la
+echo -e "\033[0;34m>>>>> GOT <<<<<\033[0;37m"
+echo "ls -la" | ./hsh
+echo -e "\n---------------\n"
 
-echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
-ls -la /tmp
-echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
-echo "ls -la /tmp" | ./hsh
-
-echo -e "\033[0;31m##########TEST ls -la /tmp WITH PATH#########\033[0;37m"
-
-echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
+echo -e "\033[0;31m### TEST 3: /bin/ls -la /tmp ###\033[0;37m"
+echo -e "\033[0;34m>>>>> EXPECTED <<<<<\033[0;32m"
 /bin/ls -la /tmp
-echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
+echo -e "\033[0;34m>>>>> GOT <<<<<\033[0;37m"
 echo "/bin/ls -la /tmp" | ./hsh
+echo -e "\n---------------\n"
 
-echo -e "\033[0;31m##########TEST ls errorfile#########\033[0;37m"
-echo -e "\033[0;31m##########SHOULD FAIL UNLESS HANDLING * WILDCARD#########\033[0;37m"
+echo -e "\033[0;31m### TEST 4: \"    ls   \" ###\033[0;37m"
+echo -e "\033[0;34m>>>>> EXPECTED <<<<<\033[0;32m"
+    ls   
+echo -e "\033[0;34m>>>>> GOT <<<<<\033[0;37m"
+echo "    ls   " | ./hsh
+echo -e "\n---------------\n"
 
-echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
-ls errorfile
-echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
-echo "ls errorfile" | ./hsh
+echo -e "\033[0;31m### TEST 5: /bin/javi ###\033[0;37m"
+echo -e "\033[0;34m>>>>> EXPECTED <<<<<\033[0;32m"
+/bin/javi
+echo -e "\033[0;34m>>>>> GOT <<<<<\033[0;37m"
+echo "/bin/javi" | ./hsh
+echo -e "\n---------------\n"
 
-echo -e "\033[0;31m##########TEST env builtin#########\033[0;37m"
+echo -e "\033[0;31m### TEST 6 exit ###\033[0;37m"
+echo -e "\033[0;34m>>>>> EXPECTED <<<<<\033[0;32m"
+echo "*exits shell*"
+echo -e "\033[0;34m>>>>> GOT <<<<<\033[0;37m"
+echo "exit" | ./hsh
+echo -e "\n---------------\n"
 
-echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
+
+echo -e "\033[0;31m### TEST 7: env ###\033[0;37m"
+echo -e "\033[0;34m>>>>> EXPECTED <<<<<\033[0;32m"
 env
-echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
+echo -e "\033[0;34m>>>>> GOT <<<<<\033[0;37m"
 echo "env" | ./hsh
+echo -e "\n---------------\n"
 
-echo -e "\033[0;31m##########TEST commands with new lines#########\033[0;37m"
-
-echo -e "\033[1;33mThis example command is: ls
-cat AUTHORS
-echo It Works!\033[0;37m"
-
-echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
+echo -e "\033[0;31m### TEST 8: commands with newlines ###\033[0;37m"
+echo -e "\033[0;34m>>>>> EXPECTED <<<<<\033[0;32m"
 ls
 cat AUTHORS
 echo "It Works!"
-echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
+echo -e "\033[0;34m>>>>> GOT <<<<<\033[0;37m"
 echo "ls
 cat AUTHORS
 echo It Works!" | ./hsh
+echo -e "\n---------------\n"
+
+echo -e "\033[0;31m### TEST 8: commands with newlines ###\033[0;37m"
+echo -e "\033[0;34m>>>>> EXPECTED <<<<<\033[0;32m"
+echo "*exits and $? = 98*"
+echo -e "\033[0;34m>>>>> GOT <<<<<\033[0;37m"
+echo "exit 98" | ./hsh
+echo -e "\n---------------\n"
+

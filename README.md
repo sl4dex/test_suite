@@ -3,10 +3,12 @@ program created by C16 students to test all of the Simple Shell project function
 ### Format
 ~~~
 ---------------
->>>>> TEST 0 (command) <<<<<
+
+### TEST x (command) ###
 >>>>> EXPECTED <<<<<
 (command on linux shell)
 >>>>> GOT <<<<<
 (command on simple shell)
+
 ----------------
 ~~~
