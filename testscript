@@ -75,3 +75,16 @@ echo -e "\033[0;34m>>>>> GOT <<<<<\033[0;37m"
 echo "exit 98" | ./hsh
 echo -e "\n---------------\n"
 
+echo -e "\033[0;31m### TEST 9: separator ls var ; ls var ###\033[0;37m"
+echo -e "\033[0;34m>>>>> EXPECTED <<<<<\033[0;32m"
+ls /var ; ls /var
+echo -e "\033[0;34m>>>>> GOT <<<<<\033[0;37m"
+echo "ls var ; ls /var" | ./hsh
+echo -e "\n---------------\n"
+
+echo -e "\033[0;31m### TEST 10: $ PATH ###\033[0;37m"
+echo -e "\033[0;34m>>>>> EXPECTED <<<<<\033[0;32m"
+$PATH
+echo -e "\033[0;34m>>>>> GOT <<<<<\033[0;37m" 
+echo "$PATH" | ./hsh
+echo -e "\n---------------\n"
