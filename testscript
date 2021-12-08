@@ -1,0 +1,61 @@
+#!/bin/bash
+echo -e "\033[0;31m########TEST ls#######\033[0;37m"
+echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
+ls
+echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
+echo ls | ./hsh
+
+echo -e "\033[0;31m########TEST ls WITH PATH########\033[0;37m"
+echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
+/bin/ls
+echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
+echo "/bin/ls" | ./hsh
+echo -e "\033[0;31m########TEST ls WITH SPACES########\033[0;37m"
+echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
+    ls
+echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
+echo "   ls" | ./hsh
+
+echo -e "\033[0;31m#########TEST ls -la /tmp##########\033[0;37m"
+
+echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
+ls -la /tmp
+echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
+echo "ls -la /tmp" | ./hsh
+
+echo -e "\033[0;31m##########TEST ls -la /tmp WITH PATH#########\033[0;37m"
+
+echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
+/bin/ls -la /tmp
+echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
+echo "/bin/ls -la /tmp" | ./hsh
+
+echo -e "\033[0;31m##########TEST ls errorfile#########\033[0;37m"
+echo -e "\033[0;31m##########SHOULD FAIL UNLESS HANDLING * WILDCARD#########\033[0;37m"
+
+echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
+ls errorfile
+echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
+echo "ls errorfile" | ./hsh
+
+echo -e "\033[0;31m##########TEST env builtin#########\033[0;37m"
+
+echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
+env
+echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
+echo "env" | ./hsh
+
+echo -e "\033[0;31m##########TEST commands with new lines#########\033[0;37m"
+
+echo -e "\033[1;33mThis example command is: ls
+cat AUTHORS
+echo It Works!\033[0;37m"
+
+echo -e "\033[0;34m>>>>>>>>>EXPECTED<<<<<<<<<\033[0;32m"
+ls
+cat AUTHORS
+echo "It Works!"
+echo -e "\033[0;34m>>>>>>>>>>GOT<<<<<<<<<<<<\033[0;37m"
+echo "ls
+cat AUTHORS
+echo It Works!" | ./hsh
